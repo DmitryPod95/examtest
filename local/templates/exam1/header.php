@@ -52,29 +52,17 @@ IncludeTemplateLangFile(__FILE__);
                     <input type="text" placeholder="Поиск">
                     <button type="submit"></button>
                 </form>
-                <nav class="menu-block">
-                    <ul>
-                        <li class="att popup-wrap">
-                            <a id="hd_singin_but_open" href="" class="btn-toggle">Войти на сайт</a>
-                            <form action="/" class="frm-login popup-block">
-                                <div class="frm-title">Войти на сайт</div>
-                                <a href="" class="btn-close">Закрыть</a>
-                                <div class="frm-row"><input type="text" placeholder="Логин"></div>
-                                <div class="frm-row"><input type="password" placeholder="Пароль"></div>
-                                <div class="frm-row"><a href="" class="btn-forgot">Забыли пароль</a></div>
-                                <div class="frm-row">
-                                    <div class="frm-chk">
-                                        <input type="checkbox" id="login">
-                                        <label for="login">Запомнить меня</label>
-                                    </div>
-                                </div>
-                                <div class="frm-row"><input type="submit" value="Войти"></div>
-                            </form>
-                        </li>
-                        <li><a href="">Зарегистрироваться</a>
-                        </li>
-                    </ul>
-                </nav>
+                <p>
+                    <?$APPLICATION->IncludeComponent(
+                        "bitrix:system.auth.form",
+                        "demo",
+                        Array(
+                            "FORGOT_PASSWORD_URL" => "/login/forgot_password=yes",
+                            "PROFILE_URL" => "/login/user.php",
+                            "REGISTER_URL" => "/login/?register=yes",
+                            "SHOW_ERRORS" => "N"
+                        )
+                    );?>
             </div>
         </div>
     </header>
@@ -84,15 +72,14 @@ IncludeTemplateLangFile(__FILE__);
         <div class="inner-wrap">
             <div class="menu-block popup-wrap">
                 <a href="" class="btn-menu btn-toggle"></a>
-
-                <?$APPLICATION->IncludeComponent(
-	"bitrix:menu",
-	"top_multi", 
+                    <?$APPLICATION->IncludeComponent(
+	"bitrix:menu", 
+	"top_menu_ex1", 
 	array(
 		"ALLOW_MULTI_SELECT" => "N",
 		"CHILD_MENU_TYPE" => "left",
 		"DELAY" => "N",
-		"MAX_LEVEL" => "3",
+		"MAX_LEVEL" => "4",
 		"MENU_CACHE_GET_VARS" => array(
 		),
 		"MENU_CACHE_TIME" => "3600",
@@ -100,10 +87,12 @@ IncludeTemplateLangFile(__FILE__);
 		"MENU_CACHE_USE_GROUPS" => "Y",
 		"ROOT_MENU_TYPE" => "top",
 		"USE_EXT" => "Y",
-		"COMPONENT_TEMPLATE" => "top_multi"
+		"COMPONENT_TEMPLATE" => "top_menu_ex1",
+		"MENU_THEME" => "site"
 	),
 	false
 );?>
+
                 <div class="menu-overlay"></div>
             </div>
         </div>
@@ -129,7 +118,7 @@ IncludeTemplateLangFile(__FILE__);
                 <div class="cnt">
                     <?php if ($APPLICATION->GetCurPage() != "/"):?>
                         <header>
-                            <h1><?php $APPLICATION->ShowTitle();?></h1>
+                            <h1><?php $APPLICATION->ShowTitle(false);?></h1>
                         </header>
                     <?php else:?>
 
