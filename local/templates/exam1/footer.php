@@ -5,8 +5,8 @@
 <!-- /content -->
 <!-- side -->
 <div class="side">
-    <!-- side anonse -->
-    <div class="side-block side-anonse">
+
+    <!-- side menu -->
         <?$APPLICATION->IncludeComponent(
             "bitrix:menu",
             "left",
@@ -23,6 +23,9 @@
                 "USE_EXT" => "Y"
             )
         );?>
+    <!-- /side menu -->
+    <!-- side anonse -->
+    <div class="side-block side-anonse">
         <div class="title-block"><span class="i i-title01"></span>Полезная информация!</div>
         <div class="item">
             <p>Клиенты предпочитают все больше эко-материалов.</p>
@@ -138,22 +141,6 @@
         </nav>
         <div class="contacts-block">
             <div class="title-block"><?=GetMessage('CONTAСT_INFO')?></div>
-            <?$APPLICATION->IncludeComponent(
-                "bitrix:menu",
-                "",
-                Array(
-                    "ALLOW_MULTI_SELECT" => "N",
-                    "CHILD_MENU_TYPE" => "left",
-                    "DELAY" => "N",
-                    "MAX_LEVEL" => "1",
-                    "MENU_CACHE_GET_VARS" => array(""),
-                    "MENU_CACHE_TIME" => "3600",
-                    "MENU_CACHE_TYPE" => "N",
-                    "MENU_CACHE_USE_GROUPS" => "Y",
-                    "ROOT_MENU_TYPE" => "bottom",
-                    "USE_EXT" => "Y"
-                )
-            );?>
             <div class="loc-block">
                 <div class="address">ул. Летняя, стр.12, офис 512</div>
                 <div class="phone"><a href="tel:84952128506">8 (495) 212-85-06</a>

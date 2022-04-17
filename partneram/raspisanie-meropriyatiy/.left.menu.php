@@ -2,14 +2,14 @@
 $aMenuLinks = Array(
 	Array(
 		"Анонсы", 
-		"/partneram/raspisanie-meropriyatiy/index.php", 
+		"index.php", 
 		Array(), 
 		Array("DESCRIPTION"=>"это текст для пункта \"Расписание мероприятий\""), 
 		"" 
 	),
 	Array(
 		"Архив", 
-		"/partneram/raspisanie-meropriyatiy/arkhiv.php", 
+		"arkhiv.php", 
 		Array(), 
 		Array(), 
 		"" 

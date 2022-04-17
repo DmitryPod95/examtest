@@ -34,7 +34,7 @@ IncludeTemplateLangFile(__FILE__);
     <!-- header -->
     <header class="header">
         <div class="inner-wrap">
-            <div class="logo-block"><a href="/" class="logo">Мебельный магазин</a>
+            <div class="logo-block"><a href="<?=SITE_DIR?>" class="logo">Мебельный магазин</a>
             </div>
             <div class="main-phone-block">
                 <?php
@@ -120,6 +120,7 @@ IncludeTemplateLangFile(__FILE__);
                         <header>
                             <h1><?php $APPLICATION->ShowTitle(false);?></h1>
                         </header>
+                    <hr>
                     <?php else:?>
 
                     <p>«Мебельная компания» осуществляет производство мебели на высококлассном оборудовании с применением минимальной доли ручного труда, что позволяет обеспечить высокое качество нашей продукции. Налажен производственный процесс как массового и индивидуального характера, что с одной стороны позволяет обеспечить постоянную номенклатуру изделий и индивидуальный подход – с другой.

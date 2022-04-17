@@ -26,7 +26,7 @@ $img = SITE_TEMPLATE_PATH."/img/rew/no_photo.jpg";
         </div>
         <div class="review-autor">
             <?=$arResult["NAME"];?>,
-            <?=$arResult["DISPLAY_ACTIVE_FROM"];?> <?=GetMessage('YEAR');?>.,
+            <?=$arResult["DISPLAY_ACTIVE_FROM"];?>,
             <?=$arResult["PROPERTIES"]["POSITION"]["VALUE"];?>,
             <?=$arResult["PROPERTIES"]["COMPANY"]["VALUE"];?>.
         </div>
@@ -35,19 +35,25 @@ $img = SITE_TEMPLATE_PATH."/img/rew/no_photo.jpg";
         <img src="<?=$img?>" alt="<?=$arResult["DETAIL_PICTURE"]["ALT"]?>">
     </div>
 </div>
-<?php if($arResult["PROPERTIES"]["FILE"]["VALUE"]):?>
+<?php if($arResult["DISPLAY_PROPERTIES"]["FILES"]):?>
     <div class="exam-review-doc">
-        <p><?=GetMessage('DOCUMENT');?>:</p>
+        <p><?=GetMessage('TITLE_DOCUMENT');?></p>
 
-       <? foreach ($arResult["PROPERTIES"]["FILE"]["VALUE"] as $idFile) {?>
-
-       <?  $file = CFILE::GetFileArray($idFile); ?>
+       <?if(count($arResult["DISPLAY_PROPERTIES"]["FILES"]["FILE_VALUE"]["SRC"]) == 1):?>
             <div  class="exam-review-item-doc">
                 <img class="rew-doc-ico" src="<?=SITE_TEMPLATE_PATH;?>/img/icons/pdf_ico_40.png">
-                <a href="<?=$file["SRC"];?>" ><?=$file["ORIGINAL_NAME"];?></a>
+                <a href="<?=$arResult["DISPLAY_PROPERTIES"]["FILES"]["FILE_VALUE"]["SRC"];?>" >
+                    <?=$arResult["DISPLAY_PROPERTIES"]["FILES"]["FILE_VALUE"]["ORIGINAL_NAME"];?>
+                </a>
             </div>
-            <?}?>
-
+       <?else:
+            foreach ($arResult["DISPLAY_PROPERTIES"]["FILES"]["FILE_VALUE"] as $arFile => $idFile) :?>
+                <div  class="exam-review-item-doc">
+                    <img class="rew-doc-ico" src="<?=SITE_TEMPLATE_PATH;?>/img/icons/pdf_ico_40.png">
+                    <a href="<?=$idFile["SRC"];?>" ><?=$idFile["ORIGINAL_NAME"];?></a>
+                </div>
+            <?endforeach;?>
+        <?endif;?>
     </div>
     <?php endif;?>
 <hr>
