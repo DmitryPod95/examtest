@@ -12,14 +12,13 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<?php $img = SITE_TEMPLATE_PATH."/img/rew/no_photo.jpg";?>
 
 <?foreach($arResult["ITEMS"] as $arItem):?>
 	<?
 	$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
 	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
-    if(isset($arItem["PREVIEW_PICTURE"]["SRC"]))
-        $img = $arItem["PREVIEW_PICTURE"]["SRC"];
+
+     $img = empty($arItem["PREVIEW_PICTURE"]["SRC"]) ? SITE_TEMPLATE_PATH."/img/rew/no_photo.jpg" : $arItem["PREVIEW_PICTURE"]["SRC"];
     ?>
     <div class="review-block" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
         <div class="review-text">
@@ -31,7 +30,7 @@ $this->setFrameMode(true);
                     </a>
                 </span>
                 <span class="review-block-description">
-                    <?=$arItem["DISPLAY_ACTIVE_FROM"]?> <?=GetMessage('YEAR');?>.,
+                    <?=$arItem["DISPLAY_ACTIVE_FROM"]?>,
                     <?=$arItem["PROPERTIES"]["POSITION"]["VALUE"]?>,
                     <?=$arItem["PROPERTIES"]["COMPANY"]["VALUE"]?>
                 </span>

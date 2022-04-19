@@ -1,4 +1,4 @@
 <?
 $MESS ["YEAR"] = "г";
-$MESS ["DOCUMENT"] = "Документы";
+$MESS ["TITLE_DOCUMENT"] = "Документы";
 ?>
